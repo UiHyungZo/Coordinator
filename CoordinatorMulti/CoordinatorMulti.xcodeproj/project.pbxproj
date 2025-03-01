@@ -14,7 +14,6 @@
 		6CCE635B2D51B10A004E6941 /* Exceptions for "CoordinatorMulti" folder in "CoordinatorMulti" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
-				"/Localized: Main.storyboard",
 				Info.plist,
 			);
 			target = 6CF978372D4C91D500AF868F /* CoordinatorMulti */;

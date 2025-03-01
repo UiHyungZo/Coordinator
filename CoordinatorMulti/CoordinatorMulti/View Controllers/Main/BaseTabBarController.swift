@@ -25,6 +25,7 @@ final class BaseTabBarController: UITabBarController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = .red
     }
     
     func hideNavigationController(){
