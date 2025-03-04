@@ -9,38 +9,39 @@ import Foundation
 import UIKit
 
 extension UIApplication {
-    func topViewController() -> UIViewController? {
-        var topViewController: UIViewController? = nil
-        if #available(iOS 13, *) {
-            for scene in connectedScenes {
-                if let windowScene = scene as? UIWindowScene {
-                    for window in windowScene.windows {
-                        if window.isKeyWindow {
-                            topViewController = window.rootViewController
-                        }
-                    }
-                }
-            }
-        } else {
-            topViewController = keyWindow?.rootViewController
+    func topViewController() -> UIViewController?{
+        guard let keyWindow = getKeyWindow() else {return nil}
+        var topVC = keyWindow.rootViewController
+        
+        while let presentedVC = topVC?.presentedViewController{
+            topVC = presentedVC
         }
-        while true {
-            if let presented = topViewController?.presentedViewController {
-                topViewController = presented
-            } else if let navController = topViewController as? UINavigationController {
-                topViewController = navController.topViewController
-            } else if let tabBarController = topViewController as? UITabBarController {
-                topViewController = tabBarController.selectedViewController
-            } else {
-                /// Handle any other third party container in `else if` if required
-                break
-            }
+        
+        if let navController = topVC as? UINavigationController{
+            return navController.topViewController
         }
-        return topViewController
+        
+        if let tabBarController = topVC as? UITabBarController{
+            return tabBarController.selectedViewController
+        }
+        
+        return topVC
     }
     
-    func topNavigatioinController() -> UINavigationController? {
+    func topNavigationController() -> UINavigationController? {
         return topViewController()?.navigationController
     }
+    
+    private func getKeyWindow() -> UIWindow? {
+        if #available(iOS 13.0, *) {
+            return connectedScenes
+                .compactMap { $0 as? UIWindowScene }
+                .flatMap { $0.windows }
+                .first { $0.isKeyWindow }
+        } else {
+            return UIApplication.shared.windows.first { $0.isKeyWindow }
+        }
+    }
+
 }
 
