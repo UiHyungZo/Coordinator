@@ -80,3 +80,34 @@ extension Coordinator {
 }
 
 
+protocol ParentCoordinator: Coordinator{
+    
+    var childCoordinators: [Coordinator] { get set }
+    
+    func addChild(_ coordinator: Coordinator?)
+    
+    func childDidFinish(_ coordinator: Coordinator?)
+}
+
+extension ParentCoordinator {
+    func addChild(_ child: Coordinator?) {
+        guard let child = child,
+              !childCoordinators.contains(where: { $0 === child })
+        else { return }
+        childCoordinators.append(child)
+    }
+    
+    func childDidFinish(_ child: Coordinator?) {
+        guard let child = child,
+              let idx = childCoordinators.firstIndex(where: { $0 === child })
+        else { return }
+        childCoordinators.remove(at: idx)
+    }
+
+}
+
+protocol ChildCoordinator: Coordinator {
+    func coordinatorDidFinish()
+    
+    var viewControllerRef: UIViewController? { get set }
+}
