@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-final class RootCoordinator: NSObject ,Coordinator, ParentCoordinator {
+final class RootCoordinator: NSObject , ParentCoordinator {
     
     
     var childCoordinators = [Coordinator]()

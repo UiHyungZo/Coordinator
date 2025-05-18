@@ -10,6 +10,8 @@ import UIKit
 final class BaseTabBarController: UITabBarController{
     weak var coordinator: RootCoordinator?
     
+    
+    
     convenience init(coordinator: RootCoordinator) {
         self.init(nibName: nil, bundle: nil)
         self.coordinator = coordinator
@@ -25,7 +27,7 @@ final class BaseTabBarController: UITabBarController{
     }
     
     func hideNavigationController(){
-        
+        self.navigationController?.setNavigationBarHidden(true, animated: false)
     }
     
 }
