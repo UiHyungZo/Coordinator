@@ -19,7 +19,7 @@ final class MerchCoordinator: ParentCoordinator{
     }
     
     
-    func start(animated: Bool) {
+    func start(animated: Bool = false) {
         
     }
     
