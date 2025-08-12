@@ -26,11 +26,11 @@ final class GreenCoordinator: ChildCoordinator {
     }
     
     func commonText(_ text: String?){
-        
+        parent?.commonText(text: text, navigationController: navigationController, animated: true)
     }
     
     func blueScreen(){
-        
+        parent?.blueScreen(useTheMainMerchCoordinator: false, navigationController: navigationController, animated: true)
     }
     
     
@@ -39,7 +39,7 @@ final class GreenCoordinator: ChildCoordinator {
     }
     
     func cleanUpZombieCoordinators(){
-        
+        parent?.baseTabBarController?.cleanUpZombieCoordinators()
     }
     
     

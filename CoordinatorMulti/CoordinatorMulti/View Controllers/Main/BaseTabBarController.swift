@@ -55,4 +55,12 @@ final class BaseTabBarController: UITabBarController{
         self.navigationController?.setNavigationBarHidden(true, animated: false)
     }
     
+    func cleanUpMerch(){
+        
+    }
+    
+    func cleanUpZombieCoordinators(){
+        
+    }
+    
 }
