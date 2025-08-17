@@ -50,7 +50,7 @@ extension RootCoordinator {
     
     func products(useTheMainMerchCoordinator: Bool){
         var topNavigationController: UINavigationController?
-        topNavigationController = UIApplication.shared.topNavigationController()
+        topNavigationController = UIApplication.shared.topNavigatioinController()
         if let topNavigationController {
             if useTheMainMerchCoordinator {
                 for child in childCoordinators {
