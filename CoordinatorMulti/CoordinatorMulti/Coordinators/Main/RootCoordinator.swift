@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-final class RootCoordinator: NSObject , ParentCoordinator {
+final class RootCoordinator: NSObject ,Coordinator ,ParentCoordinator {
     
     
     var childCoordinators = [Coordinator]()
@@ -23,6 +23,10 @@ final class RootCoordinator: NSObject , ParentCoordinator {
         let tabBar = BaseTabBarController(coordinator: self)
         baseTabBarController = tabBar
         navigationController.pushViewController(tabBar, animated: animated)
+    }
+    
+    func cleanUpMerch(){
+        baseTabBarController?.cleanUpMerch()
     }
     
 }

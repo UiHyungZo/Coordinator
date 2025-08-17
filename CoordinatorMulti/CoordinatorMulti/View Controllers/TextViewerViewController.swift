@@ -7,7 +7,7 @@
 
 import UIKit
 
-class TextViewerViewController: UIViewController, DisposableViewController{
+class TextViewerViewController: UIViewController, DisposableViewController {
     weak var coordinator: ChildCoordinator?
     private let label = UILabel()
     
@@ -47,3 +47,4 @@ class TextViewerViewController: UIViewController, DisposableViewController{
         ConsoleLogger.classDeInitialized()
     }
 }
+

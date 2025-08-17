@@ -29,7 +29,7 @@ final class BlueCoordinator: ChildCoordinator {
     }
     
     func products(){
-        
+        parent?.products(useTheMainMerchCoordinator: self.useTheMainMerchCoordinator)
     }
     
     func coordinatorDidFinish(){
@@ -37,7 +37,7 @@ final class BlueCoordinator: ChildCoordinator {
     }
     
     func cleanUpMerch() {
-        
+        parent?.cleanUpMerch()
     }
     
     

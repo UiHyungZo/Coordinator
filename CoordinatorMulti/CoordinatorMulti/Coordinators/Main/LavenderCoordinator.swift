@@ -26,11 +26,11 @@ final class LavenderCoordinator: ChildCoordinator {
     }
     
     func coordinatorDidFinish() {
-        
+        parent?.childDidFinish(self)
     }
     
     func login(){
-        
+        parent?.login()
     }
     
     
